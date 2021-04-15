@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://todo-list/./src/js/index.js"],"names":["console","log"],"mappings":"mBAEAA,QAAQC,IAAI,U","file":"app.bundle.js","sourcesContent":["import \"../scss/main.scss\";\r\n\r\nconsole.log(\"hello\");\r\n"],"sourceRoot":""}
