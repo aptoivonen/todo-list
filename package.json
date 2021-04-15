@@ -2,19 +2,37 @@
   "name": "todo-list",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack serve --open",
+    "watch": "webpack --watch",
+    "build": "NODE_ENV=production webpack",
+    "build-dev": "webpack"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aptoivonen/todo-list.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Aleksi Toivonen",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/aptoivonen/todo-list/issues"
-  },
-  "homepage": "https://github.com/aptoivonen/todo-list#readme"
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "css-loader": "^5.2.1",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.4.1",
+    "postcss": "^8.2.10",
+    "postcss-loader": "^5.2.0",
+    "postcss-preset-env": "^6.7.0",
+    "purgecss-webpack-plugin": "^4.0.3",
+    "sass": "^1.32.8",
+    "sass-loader": "^11.0.1",
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  }
 }
