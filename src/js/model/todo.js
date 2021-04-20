@@ -1,15 +1,13 @@
 import Priority from "./priority";
-
-let todoId = 0;
-
 class Todo {
   constructor({
+    id,
     title = "",
     description = "",
     dueDate = new Date(),
     priority = Priority.LOW,
   }) {
-    this.id = String(todoId++);
+    this.id = id;
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;

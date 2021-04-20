@@ -1,9 +1,7 @@
-let todoListId = 0;
-
 class TodoList {
-  constructor(title) {
+  constructor({ id, title = "" }) {
+    this.id = id;
     this.title = title;
-    this.id = String(todoListId++);
     this.todos = [];
   }
 }
