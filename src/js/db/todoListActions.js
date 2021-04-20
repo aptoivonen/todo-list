@@ -2,6 +2,14 @@ import { v4 as uuidv4 } from "uuid";
 import TodoList from "../model/todoList";
 import localStorageActions from "./localStorageActions";
 
+function findTodoList(todoListId, todoLists) {
+  const todoList = todoLists.find((todoList) => todoList.id === todoListId);
+  if (todoList) {
+    return todoList;
+  }
+  return false;
+}
+
 const todoListActions = {
   initTodoLists() {
     const fetchedTodoLists = localStorageActions.fetch();
@@ -15,9 +23,20 @@ const todoListActions = {
   },
 
   createTodoList(title) {
-    this._todoLists.push(new TodoList({ id: uuidv4(), title }));
+    const newTodoList = new TodoList({ id: uuidv4(), title });
+    this._todoLists.push(newTodoList);
     localStorageActions.save(this._todoLists);
-    return true;
+    return newTodoList;
+  },
+
+  saveTodoList({ todoListId, title }) {
+    const todoList = findTodoList(todoListId, this._todoLists);
+    if (todoList) {
+      Object.assign(todoList, { title });
+      localStorageActions.save(this._todoLists);
+      return todoList;
+    }
+    return false;
   },
 
   removeTodoList(todoListId) {
