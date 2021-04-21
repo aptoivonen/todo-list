@@ -1,5 +1,7 @@
 import "../scss/main.scss";
-import "./controller/controller";
-import pubsub from "./pubsub/pubsub";
+import { todoListComponent } from "./ui/ui";
+import { init } from "./controller/controller";
 
-window.pubsub = pubsub;
+const $todoListsRoot = document.getElementById("todoLists");
+todoListComponent.attach($todoListsRoot);
+init();
