@@ -1,0 +1,16 @@
+@use "var";
+
+.main-header {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var.$background-color;
+  border-bottom: var.$border;
+}
+
+.main-heading {
+  margin: 0;
+  font-weight: normal;
+  color: var.$primary-color;
+}
