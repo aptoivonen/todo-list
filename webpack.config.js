@@ -9,6 +9,7 @@ const isProduction = process.env.NODE_ENV === "production";
 const PATHS = {
   src: path.join(__dirname, "src"),
 };
+const CHROME_IN_WINDOWS = "chrome";
 
 module.exports = {
   mode: isProduction ? "production" : "development",
@@ -69,5 +70,8 @@ module.exports = {
   devServer: {
     contentBase: "./dev",
     hot: true,
+    open: {
+      app: [CHROME_IN_WINDOWS, "--incognito"],
+    },
   },
 };
