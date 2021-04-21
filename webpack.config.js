@@ -71,7 +71,7 @@ module.exports = {
     contentBase: "./dev",
     hot: true,
     open: {
-      app: [CHROME_IN_WINDOWS, "--incognito"],
+      app: [CHROME_IN_WINDOWS, "--incognito", "--auto-open-devtools-for-tabs"],
     },
   },
 };
