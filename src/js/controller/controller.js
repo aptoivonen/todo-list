@@ -73,5 +73,9 @@ pubsub
   .subscribe("user/todoList/save", saveTodoList)
   .subscribe("user/todoList/remove", removeTodoList);
 
-todoDb.init();
-pubsub.publish("init", { todoLists: todoDb.getTodoLists() });
+function init() {
+  todoDb.init();
+  pubsub.publish("init", todoDb.getTodoLists());
+}
+
+export { init };
