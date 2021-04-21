@@ -68,8 +68,7 @@ module.exports = {
   devtool: isProduction ? "source-map" : "inline-source-map",
 
   devServer: {
-    contentBase: `${PATHS.src}`,
-    watchContentBase: true,
+    contentBase: "./dev",
     hot: true,
     open: {
       app: [CHROME_IN_WINDOWS, "--incognito", "--auto-open-devtools-for-tabs"],
