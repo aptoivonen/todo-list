@@ -1,15 +1,16 @@
 import pubsub from "../pubsub/pubsub";
 import { empty } from "../domutils/domutils";
+import todoListTemplate from "../../handlebars/todolist-template.handlebars";
 
 const todoListComponent = {
   $container: null,
-  $template: null,
+  template: null,
 
   todoLists: [],
 
   attach($container) {
     this.$container = $container;
-    this.$template = document.getElementById("todoListLiTemplate").content;
+    this.template = todoListTemplate;
     pubsub.subscribe("init", (todoLists) => {
       this.getTodoLists(todoLists);
     });
@@ -17,20 +18,15 @@ const todoListComponent = {
 
   getTodoLists(todoLists) {
     this.todoLists = todoLists;
+    console.log(todoLists);
     this.render();
   },
 
   render() {
     empty(this.$container);
-    const fragment = document.createDocumentFragment();
-    this.todoLists.forEach((todoList) => {
-      const li = this.$template.cloneNode(true);
-      li.querySelector(".todolist-item-title").textContent = todoList.title;
-      li.querySelector(".todolist-item-number-of-todos").textContent =
-        todoList.todos.length;
-      fragment.appendChild(li);
+    this.$container.innerHTML = this.template({
+      todoLists: this.todoLists,
     });
-    this.$container.appendChild(fragment);
   },
 };
 

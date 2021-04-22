@@ -46,12 +46,13 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/,
+        test: /\.js$/i,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
         },
       },
+      { test: /\.handlebars$/i, loader: "handlebars-loader" },
     ],
   },
 
