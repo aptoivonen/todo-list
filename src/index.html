@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo List a</title>
+    <title>Todo List</title>
   </head>
   <body>
     <div class="bg-image"></div>
@@ -15,6 +15,15 @@
         </header>
         <aside class="todo-list-area">
           <h2 class="secondary-heading">Lists</h2>
+          <form id="addTodoListForm">
+            <input
+              type="text"
+              name="add-todo-list-input"
+              id="addTodoListInput"
+            /><button type="submit" id="addTodoListButton">
+              + Add new list
+            </button>
+          </form>
           <ul id="todoLists"></ul>
         </aside>
         <main class="todo-area">
@@ -22,12 +31,5 @@
         </main>
       </div>
     </div>
-
-    <template id="todoListLiTemplate">
-      <li class="todolist-item">
-        <span class="todolist-item-title"></span>
-        <span class="todolist-item-number-of-todos"></span>
-      </li>
-    </template>
   </body>
 </html>
