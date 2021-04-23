@@ -1,12 +1,5 @@
-import Priority from "./priority";
 class Todo {
-  constructor({
-    id,
-    title = "",
-    description = "",
-    dueDate = new Date(),
-    priority = Priority.LOW,
-  }) {
+  constructor({ id, title, description, dueDate, priority }) {
     this.id = id;
     this.title = title;
     this.description = description;
