@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import TodoList from "../model/todoList";
+import TodoList from "../models/todoList";
 import localStorageActions from "./localStorageActions";
 
 function findTodoList(todoListId, todoLists) {

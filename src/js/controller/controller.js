@@ -1,81 +1,33 @@
-import todoDb from "../db/todoDb";
-import pubsub from "../pubsub/pubsub";
+class Controller {
+  constructor(model, view) {
+    this.model = model;
+    this.view = view;
 
-function log(msg, data) {
-  console.log(msg, data);
-}
+    this.onTodoListsChanged(this.model.getTodoLists());
+    this.view.todoListView.bindAddTodoListHandler(
+      this.handleAddTodoList.bind(this)
+    );
+    this.view.todoListView.bindDeleteTodoListHandler(
+      this.handleDeleteTodoList.bind(this)
+    );
+    this.model.bindTodoListsChanged(this.onTodoListsChanged.bind(this));
+  }
 
-function createTodo({ todoListId, title, description, dueDate, priority }) {
-  const result = todoDb.createTodo({
-    todoListId,
-    title,
-    description,
-    dueDate,
-    priority,
-  });
-  if (result) {
-    pubsub.publish("todo/created", result);
+  onTodoListsChanged(todoLists) {
+    this.view.todoListView.setTodoLists(todoLists);
+  }
+
+  handleAddTodoList(title) {
+    this.model.addTodoList(title);
+  }
+
+  handleEditTodoList(id, title) {
+    this.model.editTodoList(id, title);
+  }
+
+  handleDeleteTodoList(id) {
+    this.model.deleteTodoList(id);
   }
 }
 
-function saveTodo({ todoId, title, description, dueDate, priority }) {
-  const result = todoDb.saveTodo({
-    todoId,
-    title,
-    description,
-    dueDate,
-    priority,
-  });
-  if (result) {
-    pubsub.publish("todo/saved", result);
-  }
-}
-
-function removeTodo(todoId) {
-  const result = todoDb.removeTodo(todoId);
-  if (result) {
-    pubsub.publish("todo/removed", { todoId, result });
-  }
-}
-
-function createTodoList(title) {
-  const result = todoDb.createTodoList(title);
-  if (result) {
-    pubsub.publish("todoList/created", result);
-  }
-}
-
-function saveTodoList({ todoListId, title }) {
-  const result = todoDb.saveTodoList({ todoListId, title });
-  if (result) {
-    pubsub.publish("todoList/saved", result);
-  }
-}
-
-function removeTodoList(todoListId) {
-  const result = todoDb.removeTodoList(todoListId);
-  if (result) {
-    pubsub.publish("todoList/removed", { todoListId, result });
-  }
-}
-pubsub
-  .subscribe("todo/created", log.bind(null, "todo/created"))
-  .subscribe("todo/saved", log.bind(null, "todo/saved"))
-  .subscribe("todo/removed", log.bind(null, "todo/removed"))
-  .subscribe("todoList/created", log.bind(null, "todoList/created"))
-  .subscribe("todoList/saved", log.bind(null, "todoList/saved"))
-  .subscribe("todoList/removed", log.bind(null, "todoList/removed"))
-  .subscribe("init", log.bind(null, "init"))
-  .subscribe("user/todo/create", createTodo)
-  .subscribe("user/todo/save", saveTodo)
-  .subscribe("user/todo/remove", removeTodo)
-  .subscribe("user/todoList/create", createTodoList)
-  .subscribe("user/todoList/save", saveTodoList)
-  .subscribe("user/todoList/remove", removeTodoList);
-
-function init() {
-  todoDb.init();
-  pubsub.publish("init", todoDb.getTodoLists());
-}
-
-export { init };
+export default Controller;

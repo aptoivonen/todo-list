@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
-import Todo from "../model/todo";
-import Priority from "../model/priority";
+import Todo from "../models/todo";
+import Priority from "../models/priority";
 import localStorageActions from "./localStorageActions";
 
 function findTodo(todoId, todoLists) {
