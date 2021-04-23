@@ -16,11 +16,10 @@
         <aside class="todo-list-area">
           <h2 class="secondary-heading">Lists</h2>
           <form id="addTodoListForm">
-            <input
-              type="text"
-              name="add-todo-list-input"
-              id="addTodoListInput"
-            /><button type="submit" id="addTodoListButton">
+            <input type="text" id="addTodoListInput" /><button
+              type="submit"
+              id="addTodoListButton"
+            >
               + Add new list
             </button>
           </form>
@@ -28,6 +27,11 @@
         </aside>
         <main class="todo-area">
           <h2 class="secondary-heading">Todos</h2>
+          <form id="addTodoForm">
+            <input type="text" id="addTodoInput" />
+            <button type="submit" id="addTodoButton">+ Add new todo</button>
+          </form>
+          <ul id="todos"></ul>
         </main>
       </div>
     </div>
