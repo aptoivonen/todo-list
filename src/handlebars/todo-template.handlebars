@@ -1,0 +1,11 @@
+{{#each todos}}
+  <li data-id="{{id}}">
+    <span class="todo-item-title">
+      {{title}}
+    </span>
+    <span>
+      {{dueDate}}
+    </span>
+    <button class="todo-delete-button" type="button">X</button>
+  </li>
+{{/each}}
