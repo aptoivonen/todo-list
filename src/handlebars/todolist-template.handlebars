@@ -6,6 +6,8 @@
     <span class="todolist-item-number-of-todos">
       {{todos.length}}
     </span>
-    <button class="todolist-delete-button" type="button">X</button>
+    {{#if removable}}
+      <button class="todolist-delete-button" type="button">X</button>
+    {{/if}}
   </li>
 {{/each}}
