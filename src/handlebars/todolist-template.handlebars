@@ -1,10 +1,11 @@
 {{#each todoLists}}
-  <li class="todolist-item">
+  <li class="todolist-item" data-id="{{id}}">
     <span class="todolist-item-title">
       {{title}}
     </span>
     <span class="todolist-item-number-of-todos">
       {{todos.length}}
     </span>
+    <button class="todolist-delete-button" type="button">X</button>
   </li>
 {{/each}}
