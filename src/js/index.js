@@ -1,7 +1,8 @@
 import "../scss/main.scss";
-import { todoListComponent } from "./ui/ui";
-import { init } from "./controller/controller";
+import Model from "./models/model";
+import View from "./views/view";
+import Controller from "./controller/controller";
 
-const $todoListsRoot = document.getElementById("todoLists");
-todoListComponent.attach($todoListsRoot);
-init();
+const model = new Model();
+const app = new Controller(model, new View());
+window.model = model;
