@@ -29,6 +29,7 @@ class Controller {
     this.view.todoListView.updateTodoLists(todoLists);
     if (todoLists.length === 0) {
       this.activeTodoListId = undefined;
+      this.view.todoView.updateTodos([]);
       return;
     }
     const foundTodoList = todoLists.find(
@@ -36,7 +37,10 @@ class Controller {
     );
     if (!this.activeTodoListId || !foundTodoList) {
       this.handleActiveTodoList(todoLists[0].id);
+      this.view.todoView.updateTodos(todoLists[0].todos);
+      return;
     }
+    this.view.todoView.updateTodos(foundTodoList.todos);
   }
 
   handleAddTodoList(title) {

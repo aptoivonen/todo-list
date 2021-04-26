@@ -11,7 +11,7 @@ class TodoView {
     this.todos = [];
   }
 
-  setTodos(todos) {
+  updateTodos(todos) {
     this.todos = todos;
     this.render();
   }
