@@ -34,10 +34,7 @@ class Controller {
     const foundTodoList = todoLists.find(
       (todoList) => todoList.id === this.activeTodoListId
     );
-    console.log("foundTodoList:", foundTodoList);
-    console.log("activeTodoListId:", this.activeTodoListId);
     if (!this.activeTodoListId || !foundTodoList) {
-      console.log("reset lists to id 0");
       this.handleActiveTodoList(todoLists[0].id);
     }
   }
