@@ -1,5 +1,5 @@
 {{#each todoLists}}
-  <li class="todo-list-item active" data-id="{{id}}">
+  <li class="todo-list-item {{#if (equals id ../activatedTodoListId)}}active{{/if}}" data-id="{{id}}">
     <span class="todo-list-item-title">
       {{title}}
     </span>
