@@ -52,7 +52,10 @@ module.exports = {
           loader: "babel-loader",
         },
       },
-      { test: /\.handlebars$/i, loader: "handlebars-loader" },
+      {
+        test: /\.handlebars$/i,
+        loader: "handlebars-loader",
+      },
     ],
   },
 
