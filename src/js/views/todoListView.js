@@ -9,6 +9,7 @@ class TodoListView {
 
     this.template = todoListTemplate;
     this.todoLists = [];
+    this.activatedTodoListId;
   }
 
   bindAddTodoListHandler(handler) {
@@ -22,20 +23,39 @@ class TodoListView {
     });
   }
 
+  bindEditTodoListHandler(handler) {
+    return;
+  }
+
   bindDeleteTodoListHandler(handler) {
     this.$todoListsRoot.addEventListener("click", (event) => {
-      const button = event.target.closest(
-        '[data-button="todo-list-delete-button"]'
-      );
-      if (!button) {
+      if (!this._isDeleteButtonClick(event)) {
         return;
       }
-      const id = button.closest("li").dataset.id;
+      const id = event.target.closest("li").dataset.id;
       handler(id);
     });
   }
 
-  setTodoLists(todoLists) {
+  bindActivateTodoListHandler(handler) {
+    this.$todoListsRoot.addEventListener("click", (event) => {
+      if (this._isDeleteButtonClick(event)) {
+        return;
+      }
+      const li = event.target.closest("li");
+      if (!li) {
+        return;
+      }
+      handler(li.dataset.id);
+    });
+  }
+
+  setActiveTodoList(id) {
+    this.activatedTodoListId = id;
+    this.render();
+  }
+
+  updateTodoLists(todoLists) {
     this.todoLists = todoLists;
     this.render();
   }
@@ -44,7 +64,12 @@ class TodoListView {
     empty(this.$todoListsRoot);
     this.$todoListsRoot.innerHTML = this.template({
       todoLists: this.todoLists,
+      activatedTodoListId: this.activatedTodoListId,
     });
+  }
+
+  _isDeleteButtonClick(event) {
+    return !!event.target.closest('[data-button="todo-list-delete-button"]');
   }
 }
 
