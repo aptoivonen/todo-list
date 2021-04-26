@@ -1,13 +1,13 @@
 {{#each todoLists}}
-  <li class="todolist-item" data-id="{{id}}">
-    <span class="todolist-item-title">
+  <li class="todo-list-item active" data-id="{{id}}">
+    <span class="todo-list-item-title">
       {{title}}
     </span>
-    <span class="todolist-item-number-of-todos">
+    <span class="todo-list-item-number-of-todos">
       {{todos.length}}
     </span>
     {{#if removable}}
-      <button class="todolist-delete-button" type="button">X</button>
+      <button class="todo-list-delete-button" type="button" data-button="todo-list-delete-button">X</button>
     {{/if}}
   </li>
 {{/each}}

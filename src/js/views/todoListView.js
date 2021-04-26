@@ -24,7 +24,9 @@ class TodoListView {
 
   bindDeleteTodoListHandler(handler) {
     this.$todoListsRoot.addEventListener("click", (event) => {
-      const button = event.target.closest("button.todolist-delete-button");
+      const button = event.target.closest(
+        '[data-button="todo-list-delete-button"]'
+      );
       if (!button) {
         return;
       }
