@@ -23,6 +23,10 @@
   border-right: var.$border;
 }
 
+.add-todo-list-title-input {
+  padding: var.$input-padding;
+}
+
 .todo-lists {
   list-style: none;
 }
@@ -50,6 +54,49 @@
 .secondary-heading {
   font-weight: normal;
   color: var.$secondary-color;
+}
+
+.add-todo {
+  &-form {
+    border: var.$border;
+    border-radius: var.$border-radius;
+  }
+
+  &-title-input {
+    display: block;
+    width: 100%;
+    padding: var.$input-padding;
+    border: none;
+    background: transparent;
+  }
+
+  &-description-textarea {
+    display: block;
+    width: 100%;
+    padding: var.$textarea-padding;
+    border: none;
+    background: transparent;
+    resize: none;
+  }
+
+  &-form-group {
+    display: flex;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  &-priority-select {
+    margin-right: 1rem;
+    background: transparent;
+  }
+
+  &-duedate-input {
+    background: transparent;
+  }
+
+  &-submit-button {
+    margin-left: auto;
+  }
 }
 
 .todos {

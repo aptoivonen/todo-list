@@ -16,10 +16,12 @@
         <aside class="todo-list-area">
           <h2 class="secondary-heading">Lists</h2>
           <form id="addTodoListForm">
-            <input type="text" id="addTodoListInput" /><button
-              type="submit"
-              id="addTodoListButton"
-            >
+            <input
+              class="add-todo-list-title-input"
+              type="text"
+              id="addTodoListInput"
+              placeholder="Name of list"
+            /><button type="submit" id="addTodoListButton">
               + Add new list
             </button>
           </form>
@@ -27,9 +29,46 @@
         </aside>
         <main class="todo-area">
           <h2 class="secondary-heading">Todos</h2>
-          <form id="addTodoForm">
-            <input type="text" id="addTodoInput" />
-            <button type="submit" id="addTodoButton">+ Add new todo</button>
+          <form class="add-todo-form" id="addTodoForm">
+            <input
+              class="add-todo-title-input"
+              type="text"
+              name="title"
+              id="addTodoTitleInput"
+              placeholder="Title"
+            />
+            <textarea
+              class="add-todo-description-textarea"
+              name="description"
+              id="addTodoDescriptionTextArea"
+              cols="30"
+              rows="4"
+              placeholder="Description"
+            ></textarea>
+            <div class="add-todo-form-group">
+              <select
+                class="add-todo-priority-select"
+                name="priority"
+                id="addTodoPrioritySelect"
+              >
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+              <input
+                class="add-todo-duedate-input"
+                type="date"
+                name="dueDate"
+                id="addTodoDueDateInput"
+              />
+              <button
+                class="add-todo-submit-button"
+                type="submit"
+                id="addTodoButton"
+              >
+                + Add new todo
+              </button>
+            </div>
           </form>
           <ul class="todos" id="todos"></ul>
         </main>
