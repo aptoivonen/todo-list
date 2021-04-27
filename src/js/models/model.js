@@ -21,6 +21,9 @@ class Model {
   }
 
   editTodoList(id, title) {
+    if (!title) {
+      return;
+    }
     const todoList = this._findTodoList(id);
     if (todoList) {
       Object.assign(todoList, { title });

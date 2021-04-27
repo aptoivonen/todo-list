@@ -47,7 +47,8 @@ class TodoListView {
     });
     this.$todoListsRoot.addEventListener("change", (event) => {
       const $titleInput = this._getTitleInputElement(event);
-      if (!$titleInput) {
+      const $title = this._getTitleElementInsideSameLi(event);
+      if (!$title || !$titleInput) {
         return;
       }
       const $li = event.target.closest("li");
@@ -55,6 +56,9 @@ class TodoListView {
         return;
       }
       handler($li.dataset.id, $titleInput.value);
+      $title.classList.add("show");
+      $titleInput.classList.remove("show");
+      $titleInput.value = "";
     });
   }
 
