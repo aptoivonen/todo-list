@@ -56,6 +56,9 @@ class Controller {
   }
 
   handleActiveTodoList(id) {
+    if (this.activeTodoListId === id) {
+      return;
+    }
     this.activeTodoListId = id;
     this.view.todoListView.setActiveTodoList(id);
   }

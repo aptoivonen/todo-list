@@ -23,6 +23,26 @@
   border-right: var.$border;
 }
 
+.todo-lists {
+  list-style: none;
+}
+
+.todo-list-item.active {
+  background: var.$primary-color;
+}
+
+%cursor-text {
+  cursor: default;
+}
+
+.todo-list-item-title:hover {
+  @extend %cursor-text;
+}
+
+.todo-list-item-number-of-todos:hover {
+  @extend %cursor-text;
+}
+
 .todo-area {
   @extend %area;
 }
@@ -30,4 +50,16 @@
 .secondary-heading {
   font-weight: normal;
   color: var.$secondary-color;
+}
+
+.todos {
+  list-style: none;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: inline;
 }

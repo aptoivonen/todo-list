@@ -1,8 +1,9 @@
 {{#each todoLists}}
   <li class="todo-list-item {{#if (equals id ../activatedTodoListId)}}active{{/if}}" data-id="{{id}}">
-    <span class="todo-list-item-title">
+    <span class="todo-list-item-title hide show" data-span="title">
       {{title}}
     </span>
+    <input class="todo-list-item-input hide" data-input="todo-list-item-input" type="text">
     <span class="todo-list-item-number-of-todos">
       {{todos.length}}
     </span>
