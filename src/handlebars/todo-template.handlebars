@@ -4,7 +4,11 @@
       {{title}}
     </span>
     <span>
-      {{dueDate}}
+      {{#if dueDate}}
+        {{formatdate dueDate}}
+      {{else}}
+        -
+      {{/if}}
     </span>
     <button class="todo-delete-button" type="button" data-button="todo-delete-button">X</button>
   </li>

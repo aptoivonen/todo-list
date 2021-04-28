@@ -26,7 +26,7 @@ class TodoView {
         priority: formatData(formData.get("priority")),
         dueDate: formatData(formData.get("dueDate"))
           ? new Date(formatData(formData.get("dueDate")))
-          : undefined,
+          : null,
       };
       console.log("todoData:", todoData);
       this.$addTodoForm.reset();
