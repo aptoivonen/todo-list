@@ -28,6 +28,9 @@ class TodoView {
           ? new Date(formatData(formData.get("dueDate")))
           : null,
       };
+      if (!todoData.title) {
+        return;
+      }
       this.$addTodoForm.reset();
       handler(todoData);
     });
