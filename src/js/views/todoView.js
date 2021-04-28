@@ -12,15 +12,23 @@ class TodoView {
 
   bindAddTodoHandler(handler) {
     this.$addTodoForm.addEventListener("submit", (event) => {
+      const formatData = (data) => {
+        const trimmedData = data.trim();
+        return trimmedData ? trimmedData : undefined;
+      };
+
       event.preventDefault();
       const formData = new FormData(this.$addTodoForm);
       const todoData = {
-        todoListId: this.todoList.id,
-        title: formData.get("title"),
-        description: formData.get("description"),
-        priority: formData.get("priority"),
-        dueDate: formData.get("dueDate"),
+        todoListId: formatData(this.todoList.id),
+        title: formatData(formData.get("title")),
+        description: formatData(formData.get("description")),
+        priority: formatData(formData.get("priority")),
+        dueDate: formatData(formData.get("dueDate"))
+          ? new Date(formatData(formData.get("dueDate")))
+          : undefined,
       };
+      console.log("todoData:", todoData);
       this.$addTodoForm.reset();
       handler(todoData);
     });
