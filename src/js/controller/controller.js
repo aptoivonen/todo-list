@@ -22,6 +22,11 @@ class Controller {
     this.view.todoListView.bindActivateTodoListHandler(
       this.handleActiveTodoList.bind(this)
     );
+
+    this.view.todoView.bindAddTodoHandler(this.handleAddTodo.bind(this));
+    this.view.todoView.bindEditTodoHandler(this.handleEditTodo.bind(this));
+    this.view.todoView.bindDeleteTodoHandler(this.handleDeleteTodo.bind(this));
+
     this.model.bindTodoListsChanged(this.onTodoListsChanged.bind(this));
   }
 
@@ -29,18 +34,19 @@ class Controller {
     this.view.todoListView.updateTodoLists(todoLists);
     if (todoLists.length === 0) {
       this.activeTodoListId = undefined;
-      this.view.todoView.updateTodos([]);
+      this.view.todoView.updateTodoList(null);
       return;
     }
     const foundTodoList = todoLists.find(
       (todoList) => todoList.id === this.activeTodoListId
     );
     if (!this.activeTodoListId || !foundTodoList) {
-      this.handleActiveTodoList(todoLists[0].id);
-      this.view.todoView.updateTodos(todoLists[0].todos);
+      const firstTodoList = todoLists[0];
+      this.handleActiveTodoList(firstTodoList);
+      this.view.todoView.updateTodoList(firstTodoList);
       return;
     }
-    this.view.todoView.updateTodos(foundTodoList.todos);
+    this.view.todoView.updateTodoList(foundTodoList);
   }
 
   handleAddTodoList(title) {
@@ -55,12 +61,25 @@ class Controller {
     this.model.deleteTodoList(id);
   }
 
-  handleActiveTodoList(id) {
-    if (this.activeTodoListId === id) {
+  handleActiveTodoList(todoList) {
+    if (this.activeTodoListId === todoList.id) {
       return;
     }
-    this.activeTodoListId = id;
-    this.view.todoListView.setActiveTodoList(id);
+    this.activeTodoListId = todoList.id;
+    this.view.todoListView.setActiveTodoList(todoList.id);
+    this.view.todoView.updateTodoList(todoList);
+  }
+
+  handleAddTodo({ todoListId, title, description, dueDate, priority }) {
+    this.model.addTodo({ todoListId, title, description, dueDate, priority });
+  }
+
+  handleEditTodo({ id, title, description, dueDate, priority }) {
+    this.model.editTodo({ id, title, description, dueDate, priority });
+  }
+
+  handleDeleteTodo(id) {
+    this.model.deleteTodo(id);
   }
 }
 

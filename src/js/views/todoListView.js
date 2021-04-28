@@ -81,7 +81,14 @@ class TodoListView {
       if (!li) {
         return;
       }
-      handler(li.dataset.id);
+      const idToFind = li.dataset.id;
+      const foundTodoList = this.todoLists.find(
+        (todoList) => todoList.id === idToFind
+      );
+      if (!foundTodoList) {
+        return;
+      }
+      handler(foundTodoList);
     });
   }
 
