@@ -65,6 +65,9 @@ module.exports = {
       paths: glob.sync(`${PATHS.src}/**/*`, {
         nodir: true,
       }),
+      safelist: {
+        greedy: [/^priority-/i],
+      },
     }),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
