@@ -1,15 +1,22 @@
 {{#each todos}}
-  <li data-id="{{id}}">
+  <li class="todo-item" data-id="{{id}}">
+    <div class="priority-{{lowercase priority}} tooltip">
+      <p class="tooltiptext">Priority: {{priority}}</p>
+    </div>
     <span class="todo-item-title">
       {{title}}
     </span>
-    <span>
+    <span class="todo-item-duedate tooltip">
       {{#if dueDate}}
         {{formatdate dueDate}}
       {{else}}
         -
       {{/if}}
+      <p class="tooltiptext">Due date (if any)</p>
     </span>
-    <button class="todo-delete-button" type="button" data-button="todo-delete-button">X</button>
+    <button class="todo-item-delete-button tooltip" type="button" data-button="todo-delete-button">
+      X
+      <p class="tooltiptext">Delete</p>
+    </button>
   </li>
 {{/each}}

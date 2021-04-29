@@ -1,5 +1,30 @@
 @use "var";
 
+.tooltip {
+  position: relative;
+
+  .tooltiptext {
+    position: absolute;
+    top: -5px;
+    left: calc(100% + 5px);
+    width: max-content;
+    max-width: 20ch;
+    margin: 0;
+    padding: 5px;
+    z-index: 1;
+    font-size: 1rem;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+  }
+
+  &:hover .tooltiptext {
+    visibility: visible;
+  }
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -58,6 +83,7 @@
 
 .add-todo {
   &-form {
+    margin-bottom: 1rem;
     border: var.$border;
     border-radius: var.$border-radius;
   }
@@ -101,6 +127,52 @@
 
 .todos {
   list-style: none;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: var.$todo-item-padding;
+  box-shadow: var.$todo-item-box-shadow;
+
+  &-title {
+    margin-left: 1rem;
+  }
+
+  &-duedate {
+    margin-left: auto;
+  }
+
+  &-delete-button {
+    margin-left: 1rem;
+  }
+}
+
+.todo-item + .todo-item {
+  margin-top: 0.5rem;
+}
+
+%base-priority {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.priority {
+  &-high {
+    @extend %base-priority;
+    background: var.$priority-high-color;
+  }
+
+  &-medium {
+    @extend %base-priority;
+    background: var.$priority-medium-color;
+  }
+
+  &-low {
+    @extend %base-priority;
+    background: var.$priority-low-color;
+  }
 }
 
 .hide {

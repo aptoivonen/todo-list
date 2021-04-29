@@ -9,11 +9,18 @@ $body-color: #4f4f4f;
 $heading-color: #262626;
 $border-color: $secondary-color;
 $background-color: rgba(255, 255, 255, 0.7);
+$priority-high-color: red;
+$priority-medium-color: yellow;
+$priority-low-color: lightblue;
 
 $background-image: url("../images/office.jpg") center / cover no-repeat;
 
 $border: 1px solid $border-color;
+$priority-border: 2px solid $border-color;
 $border-radius: 0.25rem;
 
 $input-padding: 0.25rem;
 $textarea-padding: 0.25rem;
+$todo-item-padding: 0.5rem;
+
+$todo-item-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
