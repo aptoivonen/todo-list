@@ -30,8 +30,8 @@ class TodoListView {
       if (!$title || !$titleInput) {
         return;
       }
-      $title.classList.remove("show");
-      $titleInput.classList.add("show");
+      $title.classList.remove("show-inline");
+      $titleInput.classList.add("show-inline");
       $titleInput.value = $title.textContent.trim();
       $titleInput.focus();
     });
@@ -41,8 +41,8 @@ class TodoListView {
       if (!$title || !$titleInput) {
         return;
       }
-      $title.classList.add("show");
-      $titleInput.classList.remove("show");
+      $title.classList.add("show-inline");
+      $titleInput.classList.remove("show-inline");
       $titleInput.value = "";
     });
     this.$todoListsRoot.addEventListener("change", (event) => {
@@ -56,8 +56,8 @@ class TodoListView {
         return;
       }
       handler($li.dataset.id, $titleInput.value);
-      $title.classList.add("show");
-      $titleInput.classList.remove("show");
+      $title.classList.add("show-inline");
+      $titleInput.classList.remove("show-inline");
       $titleInput.value = "";
     });
   }
