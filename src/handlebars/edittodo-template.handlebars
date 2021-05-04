@@ -1,0 +1,47 @@
+<div>
+  <input
+    class="add-todo-title-input"
+    type="text"
+    name="title"
+    id="addTodoTitleInput"
+    placeholder="Title"
+    value="{{todo.title}}"
+  />
+  <textarea
+    class="add-todo-description-textarea"
+    name="description"
+    id="addTodoDescriptionTextArea"
+    cols="30"
+    rows="4"
+    placeholder="Description"
+  >
+    {{todo.description}}
+  </textarea>
+  <div class="add-todo-form-group">
+    <select
+      class="add-todo-priority-select"
+      name="priority"
+      id="addTodoPrioritySelect"
+      onchange="this.dataset.selected = this.value;"
+      data-selected="{{todo.priority}}"
+    >
+      <option value="High" {{#if (equals todo.priority "High")}}selected{{/if}}>High</option>
+      <option value="Medium" {{#if (equals todo.priority "Medium")}}selected{{/if}}>Medium</option>
+      <option value="Low" {{#if (equals todo.priority "Low")}}selected{{/if}}>Low</option>
+    </select>
+    <input
+      class="add-todo-duedate-input"
+      type="date"
+      name="dueDate"
+      id="addTodoDueDateInput"
+      value="{{#if todo.dueDate}}{{formatrfc3339date todo.dueDate}}{{/if}}"
+    />
+    <button
+      class="add-todo-submit-button"
+      type="submit"
+      id="addTodoButton"
+    >
+      Save todo
+    </button>
+  </div>
+</div>
