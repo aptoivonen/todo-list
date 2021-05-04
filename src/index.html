@@ -29,7 +29,11 @@
         </aside>
         <main class="todo-area">
           <h2 class="secondary-heading">Todos</h2>
-          <form class="add-todo-form" id="addTodoForm">
+          <form
+            class="add-todo-form"
+            id="addTodoForm"
+            onreset="document.getElementById('addTodoPrioritySelect').dataset.selected='High'"
+          >
             <input
               class="add-todo-title-input"
               type="text"
@@ -50,6 +54,8 @@
                 class="add-todo-priority-select"
                 name="priority"
                 id="addTodoPrioritySelect"
+                onchange="this.dataset.selected = this.value;"
+                data-selected="High"
               >
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>

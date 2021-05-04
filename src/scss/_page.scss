@@ -31,20 +31,22 @@
   list-style: none;
 }
 
-.todo-list-item.active {
-  background: var.$primary-color;
-}
-
 %cursor-text {
   cursor: default;
 }
 
-.todo-list-item-title:hover {
-  @extend %cursor-text;
-}
+.todo-list-item {
+  &.active {
+    background: var.$primary-color;
+  }
 
-.todo-list-item-number-of-todos:hover {
-  @extend %cursor-text;
+  &-title:hover {
+    @extend %cursor-text;
+  }
+
+  &-number-of-todos:hover {
+    @extend %cursor-text;
+  }
 }
 
 .todo-area {
@@ -89,6 +91,21 @@
   &-priority-select {
     margin-right: 1rem;
     background: transparent;
+  }
+
+  &-priority-select[data-selected="High"],
+  &-priority-select option[value="High"] {
+    background: var.$priority-high-color;
+  }
+
+  &-priority-select[data-selected="Medium"],
+  &-priority-select option[value="Medium"] {
+    background: var.$priority-medium-color;
+  }
+
+  &-priority-select[data-selected="Low"],
+  &-priority-select option[value="Low"] {
+    background: var.$priority-low-color;
   }
 
   &-duedate-input {
