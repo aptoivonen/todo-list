@@ -1,9 +1,13 @@
 import { createTodoList } from "./todoListFactory";
 import { createTodo } from "./todoFactory";
 
+const LOCALSTORAGE_KEY = "todoLists";
+
 class Model {
   constructor() {
-    this._todoLists = [createTodoList({ type: "default" })];
+    this._todoLists = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || [
+      createTodoList({ type: "default" }),
+    ];
   }
 
   bindTodoListsChanged(callback) {
@@ -17,7 +21,7 @@ class Model {
   addTodoList(title) {
     const newTodoList = createTodoList({ type: "standard", title });
     this._todoLists.push(newTodoList);
-    this.onTodoListsChanged(this._todoLists);
+    this._commit(this._todoLists);
   }
 
   editTodoList(id, title) {
@@ -27,7 +31,7 @@ class Model {
     const todoList = this._findTodoList(id);
     if (todoList) {
       Object.assign(todoList, { title });
-      this.onTodoListsChanged(this._todoLists);
+      this._commit(this._todoLists);
     }
   }
 
@@ -40,7 +44,7 @@ class Model {
       return;
     }
     this._todoLists = this._todoLists.filter((todoList) => todoList.id !== id);
-    this.onTodoListsChanged(this._todoLists);
+    this._commit(this._todoLists);
   }
 
   addTodo({ todoListId, title, description, dueDate, priority }) {
@@ -50,7 +54,7 @@ class Model {
     }
     const newTodo = createTodo({ title, description, dueDate, priority });
     todoListToAddTo.todos.push(newTodo);
-    this.onTodoListsChanged(this._todoLists);
+    this._commit(this._todoLists);
   }
 
   editTodo({ id, title, description, dueDate, priority }) {
@@ -61,7 +65,7 @@ class Model {
         description !== undefined ? description : todo.description;
       todo.dueDate = dueDate !== undefined ? dueDate : todo.dueDate;
       todo.priority = priority !== undefined ? priority : todo.priority;
-      this.onTodoListsChanged(this._todoLists);
+      this._commit(this._todoLists);
     }
   }
 
@@ -69,8 +73,13 @@ class Model {
     const todoList = this._findTodoListForTodo(id);
     if (todoList) {
       todoList.todos = todoList.todos.filter((todo) => todo.id !== id);
-      this.onTodoListsChanged(this._todoLists);
+      this._commit(this._todoLists);
     }
+  }
+
+  _commit(todoLists) {
+    this.onTodoListsChanged(todoLists);
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(todoLists));
   }
 
   _findTodoList(todoListId) {
