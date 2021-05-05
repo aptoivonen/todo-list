@@ -40,8 +40,7 @@ class TodoView {
       if (!$li) {
         return;
       }
-      this.todoToEdit = this._findTodo($li.dataset.id);
-      this.render();
+      this._updateTodoToEdit(this._findTodo($li.dataset.id));
     });
     this.$editTodoForm.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -50,11 +49,10 @@ class TodoView {
         formData,
         todoId: this.todoToEdit.id,
       });
-      this.todoToEdit = null;
+      this._updateTodoToEdit(null);
       if (todoData.title) {
         handler(todoData);
       }
-      this.render();
     });
   }
 
@@ -91,6 +89,23 @@ class TodoView {
     } else {
       this.$overlay.classList.remove("show-flex");
     }
+  }
+
+  _updateTodoToEdit(todoToEdit) {
+    this.todoToEdit = todoToEdit;
+    this.render();
+  }
+
+  _bind() {
+    this.$overlay.addEventListener("click", (event) => {
+      if (this._isEditFormClick(event)) {
+        return;
+      }
+    });
+  }
+
+  _isEditFormClick(event) {
+    return !!event.target.closest("#editTodoForm") === this.$editTodoForm;
   }
 
   _isDeleteButtonClick(event) {
