@@ -58,14 +58,14 @@
   color: var.$secondary-color;
 }
 
-%add-todo-input {
+%todo-input {
   display: block;
   width: 100%;
   border: none;
   background: transparent;
 }
 
-.add-todo {
+.todo {
   &-form {
     margin-bottom: 1rem;
     border: var.$border;
@@ -73,19 +73,19 @@
   }
 
   &-title-input {
-    @extend %add-todo-input;
+    @extend %todo-input;
     padding: var.$input-padding;
   }
 
   &-description-textarea {
-    @extend %add-todo-input;
+    @extend %todo-input;
     padding: var.$textarea-padding;
     resize: none;
   }
 
   &-form-group {
     display: flex;
-    padding: 0.5rem;
+    padding: var.$form-group-padding;
     margin-top: 0.5rem;
   }
 
@@ -179,6 +179,11 @@
   justify-content: center;
   z-index: 100;
   background: var.$overlay-background-color;
+}
+
+.edit-todo-form-container {
+  width: 100%;
+  max-width: 900px;
 }
 
 .hide {

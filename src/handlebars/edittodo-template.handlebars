@@ -1,6 +1,6 @@
 <div>
   <input
-    class="add-todo-title-input"
+    class="todo-title-input"
     type="text"
     name="title"
     id="addTodoTitleInput"
@@ -8,7 +8,7 @@
     value="{{todo.title}}"
   />
   <textarea
-    class="add-todo-description-textarea"
+    class="todo-description-textarea"
     name="description"
     id="addTodoDescriptionTextArea"
     cols="30"
@@ -17,9 +17,9 @@
   >
     {{todo.description}}
   </textarea>
-  <div class="add-todo-form-group">
+  <div class="todo-form-group">
     <select
-      class="add-todo-priority-select"
+      class="todo-priority-select"
       name="priority"
       id="addTodoPrioritySelect"
       onchange="this.dataset.selected = this.value;"
@@ -30,14 +30,14 @@
       <option value="Low" {{#if (equals todo.priority "Low")}}selected{{/if}}>Low</option>
     </select>
     <input
-      class="add-todo-duedate-input"
+      class="todo-duedate-input"
       type="date"
       name="dueDate"
       id="addTodoDueDateInput"
       value="{{#if todo.dueDate}}{{formatrfc3339date todo.dueDate}}{{/if}}"
     />
     <button
-      class="add-todo-submit-button"
+      class="todo-submit-button"
       type="submit"
       id="addTodoButton"
     >

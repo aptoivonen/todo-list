@@ -30,28 +30,28 @@
         <main class="todo-area">
           <h2 class="secondary-heading">Todos</h2>
           <form
-            class="add-todo-form"
+            class="todo-form"
             id="addTodoForm"
             onreset="document.getElementById('addTodoPrioritySelect').dataset.selected='High'"
           >
             <input
-              class="add-todo-title-input"
+              class="todo-title-input"
               type="text"
               name="title"
               id="addTodoTitleInput"
               placeholder="Title"
             />
             <textarea
-              class="add-todo-description-textarea"
+              class="todo-description-textarea"
               name="description"
               id="addTodoDescriptionTextArea"
               cols="30"
               rows="4"
               placeholder="Description"
             ></textarea>
-            <div class="add-todo-form-group">
+            <div class="todo-form-group">
               <select
-                class="add-todo-priority-select"
+                class="todo-priority-select"
                 name="priority"
                 id="addTodoPrioritySelect"
                 onchange="this.dataset.selected = this.value;"
@@ -62,13 +62,13 @@
                 <option value="Low">Low</option>
               </select>
               <input
-                class="add-todo-duedate-input"
+                class="todo-duedate-input"
                 type="date"
                 name="dueDate"
                 id="addTodoDueDateInput"
               />
               <button
-                class="add-todo-submit-button"
+                class="todo-submit-button"
                 type="submit"
                 id="addTodoButton"
               >
@@ -81,7 +81,9 @@
       </div>
     </div>
     <div class="overlay hide" id="overlay">
-      <form class="edit-todo-form" id="editTodoForm"></form>
+      <div class="edit-todo-form-container">
+        <form class="todo-form" id="editTodoForm"></form>
+      </div>
     </div>
   </body>
 </html>

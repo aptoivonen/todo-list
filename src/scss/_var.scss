@@ -20,8 +20,9 @@ $border: 1px solid $border-color;
 $priority-border: 2px solid $border-color;
 $border-radius: 0.25rem;
 
-$input-padding: 0.25rem;
-$textarea-padding: 0.25rem;
+$input-padding: 0.25rem 0.5rem;
+$textarea-padding: 0.25rem 0.5rem;
+$form-group-padding: 0.5rem;
 $todo-item-padding: 0.5rem;
 
 $todo-item-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
