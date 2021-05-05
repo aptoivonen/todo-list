@@ -13,6 +13,8 @@ class TodoView {
     this.editTemplate = editTodoTemplate;
     this.todoList = null;
     this.todoToEdit = null;
+
+    this._bind();
   }
 
   bindAddTodoHandler(handler) {
@@ -101,11 +103,12 @@ class TodoView {
       if (this._isEditFormClick(event)) {
         return;
       }
+      this._updateTodoToEdit(null);
     });
   }
 
   _isEditFormClick(event) {
-    return !!event.target.closest("#editTodoForm") === this.$editTodoForm;
+    return !!(event.target.closest("#editTodoForm") === this.$editTodoForm);
   }
 
   _isDeleteButtonClick(event) {
