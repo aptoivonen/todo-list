@@ -58,6 +58,13 @@
   color: var.$secondary-color;
 }
 
+%add-todo-input {
+  display: block;
+  width: 100%;
+  border: none;
+  background: transparent;
+}
+
 .add-todo {
   &-form {
     margin-bottom: 1rem;
@@ -66,19 +73,13 @@
   }
 
   &-title-input {
-    display: block;
-    width: 100%;
+    @extend %add-todo-input;
     padding: var.$input-padding;
-    border: none;
-    background: transparent;
   }
 
   &-description-textarea {
-    display: block;
-    width: 100%;
+    @extend %add-todo-input;
     padding: var.$textarea-padding;
-    border: none;
-    background: transparent;
     resize: none;
   }
 
