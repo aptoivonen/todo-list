@@ -1,0 +1,51 @@
+@use "var";
+
+.todos {
+  list-style: none;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: var.$todo-item-padding;
+  box-shadow: var.$todo-item-box-shadow;
+
+  &-title {
+    margin-left: 1rem;
+  }
+
+  &-duedate {
+    margin-left: auto;
+  }
+
+  &-delete-button {
+    margin-left: 1rem;
+  }
+}
+
+.todo-item + .todo-item {
+  margin-top: 0.5rem;
+}
+
+%base-priority {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.priority {
+  &-high {
+    @extend %base-priority;
+    background: var.$priority-high-color;
+  }
+
+  &-medium {
+    @extend %base-priority;
+    background: var.$priority-medium-color;
+  }
+
+  &-low {
+    @extend %base-priority;
+    background: var.$priority-low-color;
+  }
+}

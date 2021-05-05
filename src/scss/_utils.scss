@@ -1,0 +1,21 @@
+@use "var";
+
+.bg-white {
+  background-color: var.$white;
+}
+
+.hide {
+  display: none;
+}
+
+.show-inline {
+  display: inline;
+}
+
+.show {
+  display: block;
+}
+
+.show-flex {
+  display: flex;
+}

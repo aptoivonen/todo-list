@@ -1,0 +1,67 @@
+@use "var";
+
+%todo-input {
+  display: block;
+  width: 100%;
+  border: none;
+  font-family: inherit;
+}
+
+%todo-input-background {
+  background: var.$todo-input-background-color;
+}
+
+.todo {
+  &-form {
+    margin-bottom: 1rem;
+    border: var.$border;
+    border-radius: var.$border-radius;
+  }
+
+  &-title-input {
+    @extend %todo-input;
+    @extend %todo-input-background;
+    padding: var.$input-padding;
+  }
+
+  &-description-textarea {
+    @extend %todo-input;
+    @extend %todo-input-background;
+    padding: var.$textarea-padding;
+    resize: none;
+  }
+
+  &-form-group {
+    display: flex;
+    padding: var.$form-group-padding;
+    margin-top: 0.5rem;
+  }
+
+  &-priority-select {
+    margin-right: 1rem;
+    @extend %todo-input-background;
+  }
+
+  &-priority-select[data-selected="High"],
+  &-priority-select option[value="High"] {
+    background: var.$priority-high-color;
+  }
+
+  &-priority-select[data-selected="Medium"],
+  &-priority-select option[value="Medium"] {
+    background: var.$priority-medium-color;
+  }
+
+  &-priority-select[data-selected="Low"],
+  &-priority-select option[value="Low"] {
+    background: var.$priority-low-color;
+  }
+
+  &-duedate-input {
+    @extend %todo-input-background;
+  }
+
+  &-submit-button {
+    margin-left: auto;
+  }
+}
