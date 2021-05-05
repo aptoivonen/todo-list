@@ -1,5 +1,5 @@
 {{#each todoLists}}
-  <li class="todo-list-item {{#if (equals id ../activatedTodoListId)}}active{{/if}}" data-id="{{id}}">
+  <li class="item todo-list-item {{#if (equals id ../activatedTodoListId)}}active{{/if}}" data-id="{{id}}">
     <span class="todo-list-item-title hide show-inline" data-span="title">
       {{title}}
     </span>
@@ -8,7 +8,7 @@
       {{todos.length}}
     </span>
     {{#if removable}}
-      <button class="todo-list-delete-button" type="button" data-button="todo-list-delete-button">X</button>
+      <button class="delete-btn todo-list-item-delete-btn" type="button" data-button="todo-list-delete-button"></button>
     {{/if}}
   </li>
 {{/each}}

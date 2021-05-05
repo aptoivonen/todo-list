@@ -1,5 +1,5 @@
 {{#each todos}}
-  <li class="todo-item" data-id="{{id}}">
+  <li class="item todo-item" data-id="{{id}}">
     <div class="priority-{{lowercase priority}}">
     </div>
     <span class="todo-item-title">
@@ -12,8 +12,6 @@
         -
       {{/if}}
     </span>
-    <button class="todo-item-delete-button" type="button" data-button="todo-delete-button">
-      X
-    </button>
+    <button class="delete-btn todo-item-delete-btn" type="button" data-button="todo-delete-button"></button>
   </li>
 {{/each}}

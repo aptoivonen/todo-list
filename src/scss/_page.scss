@@ -23,32 +23,6 @@
   border-right: var.$border;
 }
 
-.add-todo-list-title-input {
-  padding: var.$input-padding;
-}
-
-.todo-lists {
-  list-style: none;
-}
-
-%cursor-text {
-  cursor: default;
-}
-
-.todo-list-item {
-  &.active {
-    background: var.$primary-color;
-  }
-
-  &-title:hover {
-    @extend %cursor-text;
-  }
-
-  &-number-of-todos:hover {
-    @extend %cursor-text;
-  }
-}
-
 .todo-area {
   @extend %area;
 }
@@ -56,4 +30,15 @@
 .secondary-heading {
   font-weight: normal;
   color: var.$secondary-color;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: var.$item-padding;
+  box-shadow: var.$item-box-shadow;
+}
+
+.item + .item {
+  margin-top: 0.5rem;
 }

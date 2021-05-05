@@ -5,26 +5,21 @@
 }
 
 .todo-item {
-  display: flex;
-  align-items: center;
-  padding: var.$todo-item-padding;
-  box-shadow: var.$todo-item-box-shadow;
-
   &-title {
     margin-left: 1rem;
+  }
+
+  &-title:hover {
+    cursor: default;
   }
 
   &-duedate {
     margin-left: auto;
   }
 
-  &-delete-button {
+  &-delete-btn {
     margin-left: 1rem;
   }
-}
-
-.todo-item + .todo-item {
-  margin-top: 0.5rem;
 }
 
 %base-priority {
