@@ -6,7 +6,12 @@
     margin-bottom: var.$form-bottom-margin;
   }
 
+  &-form-group {
+    display: flex;
+  }
+
   &-title-input {
+    flex: 1;
     padding: var.$input-padding;
   }
 }
