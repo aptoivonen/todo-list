@@ -42,3 +42,10 @@
 .item + .item {
   margin-top: 0.5rem;
 }
+
+@mixin round {
+  display: block;
+  width: var.$round-item-width;
+  height: var.$round-item-height;
+  border-radius: 50%;
+}
