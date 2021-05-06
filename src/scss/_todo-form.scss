@@ -13,7 +13,7 @@
 
 .todo {
   &-form {
-    margin-bottom: 1rem;
+    margin-bottom: var.$form-bottom-margin;
     border: var.$border;
     border-radius: var.$border-radius;
   }

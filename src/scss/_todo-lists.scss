@@ -1,8 +1,14 @@
 @use "var";
 @use "page";
 
-.add-todo-list-title-input {
-  padding: var.$input-padding;
+.add-todo-list {
+  &-form {
+    margin-bottom: var.$form-bottom-margin;
+  }
+
+  &-title-input {
+    padding: var.$input-padding;
+  }
 }
 
 .todo-lists {
