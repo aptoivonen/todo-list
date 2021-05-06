@@ -1,13 +1,15 @@
 import { createTodoList } from "./todoListFactory";
 import { createTodo } from "./todoFactory";
+import { replacer, reviver } from "./json";
 
 const LOCALSTORAGE_KEY = "todoLists";
 
 class Model {
   constructor() {
-    this._todoLists = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || [
-      createTodoList({ type: "default" }),
-    ];
+    this._todoLists = JSON.parse(
+      localStorage.getItem(LOCALSTORAGE_KEY),
+      reviver
+    ) || [createTodoList({ type: "default" })];
   }
 
   bindTodoListsChanged(callback) {
@@ -79,7 +81,7 @@ class Model {
 
   _commit(todoLists) {
     this.onTodoListsChanged(todoLists);
-    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(todoLists));
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(todoLists, replacer));
   }
 
   _findTodoList(todoListId) {
