@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $green: #56c895;
 $red: #d08484;
 $grey: #a3a3a3;
@@ -15,6 +17,7 @@ $priority-high-color: $red;
 $priority-medium-color: yellow;
 $priority-low-color: lightblue;
 $overlay-background-color: rgba(0, 0, 0, 0.5);
+$button-active-color: color.scale($primary-color, $lightness: +10%);
 
 $background-image: url("../images/office.jpg") center / cover no-repeat;
 
@@ -22,14 +25,18 @@ $border: 1px solid $border-color;
 $priority-border: 2px solid $border-color;
 $border-radius: 0.25rem;
 
+$form-bottom-margin: 1rem;
+
 $input-padding: 0.25rem 0.5rem;
 $textarea-padding: 0.25rem 0.5rem;
 $form-group-padding: 0.5rem;
 $item-padding: 0.5rem;
 $todo-list-left-padding: 1rem;
+$button-padding: 0.3rem 0.5rem;
 
 $item-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
 $delete-button-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+$button-box-shadow: 0 0 5px 5px color.change($primary-color, $alpha: 0.2);
 
 $round-item-width: 1.5rem;
 $round-item-height: 1.5rem;
